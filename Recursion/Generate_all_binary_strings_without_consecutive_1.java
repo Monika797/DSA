@@ -24,7 +24,7 @@ class Solution {
     }
 }
 
-class Main {
+class Mains {
 
     public static void main(String[] args) {
 
