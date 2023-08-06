@@ -2,12 +2,12 @@ package Graphs;
 
 import java.util.*;
 
-class Pairs {
+class Pair {
     int i;
     int j;
     int d;
 
-    Pairs(int _i, int _j, int _d) {
+    public Pair(int _i, int _j, int _d) {
         this.i = _i;
         this.j = _j;
         this.d = _d;
@@ -22,14 +22,14 @@ public class Distance_of_nearest_cell_having_1 {
         int[][] visited = new int[rows][cols];
         int[][] ans = new int[rows][cols];
 
-        Queue<Pairs> q = new LinkedList<>();
+        Queue<Pair> q = new LinkedList<>();
 
         // find ones and add them to queue with 0 distance and mark them visited
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                 if (grid[i][j] == 1) {
-                    q.add(new Pairs(i, j, 0));
+                    q.add(new Pair(i, j, 0));
                     visited[i][j] = 1;
                 }
 
@@ -48,14 +48,14 @@ public class Distance_of_nearest_cell_having_1 {
         // add to queue with one more distance and mark it visited
 
         while (q.size() != 0) {
-            Pairs p = q.remove();
+            Pair p = q.remove();
             ans[p.i][p.j] = p.d;
             for (int i = 0; i < 4; i++) {
                 int nrow = p.i + dx[i];
                 int ncol = p.j + dy[i];
 
                 if (nrow >= 0 && nrow < rows && ncol >= 0 && ncol < cols && visited[nrow][ncol] == 0) {
-                    q.add(new Pairs(nrow, ncol, p.d + 1));
+                    q.add(new Pair(nrow, ncol, p.d + 1));
                     visited[nrow][ncol] = 1;
                 }
             }
